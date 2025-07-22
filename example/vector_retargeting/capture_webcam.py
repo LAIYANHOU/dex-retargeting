@@ -21,9 +21,7 @@ def main(video_path: str, video_capture_device: Union[str, int] = 0):
 
     path = Path(video_path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    writer = cv2.VideoWriter(
-        str(video_path), cv2.VideoWriter_fourcc(*"mp4v"), 30.0, (width, height)
-    )
+    writer = cv2.VideoWriter(str(video_path), cv2.VideoWriter_fourcc(*"mp4v"), 30.0, (width, height))
 
     while True:
         ret, frame = cap.read()
@@ -32,7 +30,7 @@ def main(video_path: str, video_capture_device: Union[str, int] = 0):
         if cv2.waitKey(1) & 0xFF == 27:
             break
 
-    print("Recording finished")
+    print('Recording finished')
     cap.release()
     writer.release()
     cv2.destroyAllWindows()
